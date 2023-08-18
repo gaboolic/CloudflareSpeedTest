@@ -10,3 +10,5 @@ _multiconfig.yml
 .idea
 .vscode
 file.zip
+txt/
+txt/*
