@@ -3,6 +3,26 @@ const path = require('path');
 const readline = require('readline');
 const { execSync } = require('child_process');
 
+const directory = 'speedtestresult';
+
+// 递归删除目录下的所有文件
+function deleteFiles(dirPath) {
+    if (fs.existsSync(dirPath)) {
+        fs.readdirSync(dirPath).forEach(file => {
+            const filePath = path.join(dirPath, file);
+
+            if (fs.statSync(filePath).isDirectory()) {
+                deleteFiles(filePath); // 递归删除子目录中的文件
+            } else {
+                fs.unlinkSync(filePath); // 删除文件
+                console.log(`删除文件: ${filePath}`);
+            }
+        });
+    }
+}
+
+deleteFiles(directory);
+
 // https://zip.baipiao.eu.org/
 async function readAllFilenames(directoryPath) {
     const files = fs.readdirSync(directoryPath);

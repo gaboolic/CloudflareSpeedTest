@@ -18,9 +18,6 @@ function deleteFiles(dirPath) {
                 console.log(`删除文件: ${filePath}`);
             }
         });
-
-        fs.rmdirSync(dirPath); // 删除目录
-        console.log(`删除目录: ${dirPath}`);
     }
 }
 
